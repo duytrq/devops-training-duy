@@ -8,16 +8,18 @@ set -euo pipefail
 
 # Function to show help and usage instructions
 show_help() {
-    echo "Usage: $(basename "$0") <directory_to_backup>"
+    echo "Usage: $(basename "$0") [options] <directory_to_backup>"
     echo "Backup a directory as a .tar.gz archive stored in ~/backups/"
     echo ""
     echo "Options:"
-    echo "  -h, --help    Show this help message"
+    echo "  -h, --help            Show this help message"
+    echo "  --exclude=<pattern>   Exclude files matching the pattern (e.g. '*.log', 'tmp')"
 }
 
 # Function to perform the backup and print statistics
 perform_backup() {
     local target_dir="$1"
+    local exclude_pattern="${2:-}"
     
     # Check if the target directory exists
     if [ ! -d "$target_dir" ]; then
@@ -44,8 +46,13 @@ perform_backup() {
 
     echo "Backing up directory '$target_abs_path'..."
 
-    # Compress the source directory from its parent folder
-    tar -czf "$backup_path" -C "$(dirname "$target_abs_path")" "$dir_basename"
+    # Compress the source directory from its parent folder, applying exclude pattern if set
+    if [ -n "$exclude_pattern" ]; then
+        echo "Excluding files matching pattern: $exclude_pattern"
+        tar --exclude="$exclude_pattern" -czf "$backup_path" -C "$(dirname "$target_abs_path")" "$dir_basename"
+    else
+        tar -czf "$backup_path" -C "$(dirname "$target_abs_path")" "$dir_basename"
+    fi
 
     # Calculate count of files and size of the generated archive
     # Use grep -v '/$' to exclude directories from the file count
@@ -71,14 +78,52 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-case "$1" in
-    -h|--help)
-        show_help
-        exit 0
-        ;;
-    *)
-        # Remove trailing slash if present
-        input_dir="${1%/}"
-        perform_backup "$input_dir"
-        ;;
-esac
+exclude_pattern=""
+input_dir=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help)
+            show_help
+            exit 0
+            ;;
+        --exclude=*)
+            exclude_pattern="${1#*=}"
+            shift
+            ;;
+        --exclude)
+            if [[ $# -gt 1 ]]; then
+                exclude_pattern="$2"
+                shift 2
+            else
+                echo "Error: --exclude requires an argument." >&2
+                exit 1
+            fi
+            ;;
+        -*)
+            echo "Error: Unknown option $1" >&2
+            show_help
+            exit 1
+            ;;
+        *)
+            if [[ -z "$input_dir" ]]; then
+                input_dir="${1%/}"
+                shift
+            else
+                echo "Error: Multiple target directories specified." >&2
+                show_help
+                exit 1
+            fi
+            ;;
+    esac
+done
+
+# Ensure a target directory was specified
+if [[ -z "$input_dir" ]]; then
+    echo "Error: Missing target directory to backup." >&2
+    show_help
+    exit 1
+fi
+
+# Run the backup process
+perform_backup "$input_dir" "$exclude_pattern"
