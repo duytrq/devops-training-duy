@@ -122,3 +122,7 @@ chmod +x ./backup.sh
 ```
 
 ![Backup Execution](./screenshots/backup.png)
+
+### Ở folder ~/backups
+
+![Backup Result](./screenshots/result.png)
