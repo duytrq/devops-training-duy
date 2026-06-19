@@ -1,55 +1,13 @@
-# Kế hoạch chi tiết thực hiện bài thực hành Git Advanced
-
-Tài liệu này trình bày kế hoạch chi tiết từng bước để thực hiện các yêu cầu trong bài thực hành Day 3 — Git Advanced.
-
----
-
-## 🎯 Mục tiêu
-- Thành thạo các kỹ năng Git nâng cao: `rebase -i` (squash), `cherry-pick`, giải quyết xung đột (conflict resolution), truy vết qua `reflog`, tìm lỗi tự động bằng `git bisect`.
-- Cấu hình kiểm tra mã nguồn tự động với `pre-commit` hooks.
-- So sánh các workflow phổ biến trong phát triển phần mềm (Trunk-based, GitFlow, GitHub Flow).
-
----
-
-## 🏗️ Phase 1: Thiết lập môi trường và cấu hình Repo riêng (`git-lab`)
-
-Vì thư mục làm việc hiện tại `/home/lozshi/devops-training-duy` là một Git repository lớn của khóa học, để tránh việc tạo nested repo làm ảnh hưởng tới repo chính, chúng ta sẽ thực hiện:
-1. Tạo thư mục `git-lab` bên trong `day-3-git`.
-2. Khởi tạo Git bên trong thư mục `git-lab`.
-3. Cấu hình `.gitignore` của repo chính để bỏ qua thư mục `git-lab/`.
-
-### Các bước thực hiện:
-```bash
-# 1. Đứng tại thư mục day-3-git, tạo .gitignore nếu chưa có để bỏ qua git-lab/
-echo "git-lab/" >> .gitignore
-
-# 2. Tạo thư mục git-lab và khởi tạo git
-mkdir -p git-lab
-cd git-lab
-git init
-
-# 3. Cấu hình thông tin commit cục bộ (local config) cho repo demo này
-git config user.name "Duy Tran"
-git config user.email "duytrq@example.com"
-
-# 4. Tạo file ban đầu trên branch main để làm điểm neo (anchor commit)
-echo "Initial repository file" > init.txt
-git add init.txt
-git commit -m "chore: initial commit on main"
-```
-
----
-
-## 🧪 Phase 2: Thực hiện các phần thực hành (Hands-on)
-
 ### Part A — Rebase + Cherry-pick + Conflict
 
 #### Bước 1: Tạo branch `feature-a` và commit 3 lần
+
 1. Tạo và di chuyển sang branch `feature-a`.
 2. Tạo 3 commit khác nhau trên 3 file khác nhau:
+
    ```bash
    git checkout -b feature-a
-   
+
    # Commit 1
    echo "Feature A - Step 1" > file1.txt
    git add file1.txt
@@ -65,11 +23,14 @@ git commit -m "chore: initial commit on main"
    git add file3.txt
    git commit -m "feat(a): add file3.txt"
    ```
+
 3. Lưu vết log: `git log --oneline --graph --all` ghi vào `history.md`.
 
 #### Bước 2: Tạo branch `feature-b` từ `main` và commit 2 lần gây xung đột
+
 1. Quay về `main`, tạo và di chuyển sang branch `feature-b`.
 2. Tạo 2 commit chỉnh sửa đè lên cùng các file đã tạo ở `feature-a` (`file1.txt`, `file2.txt`):
+
    ```bash
    git checkout main
    git checkout -b feature-b
@@ -84,9 +45,11 @@ git commit -m "chore: initial commit on main"
    git add file2.txt
    git commit -m "feat(b): add file2.txt with conflicting content"
    ```
+
 3. Lưu vết log ghi vào `history.md`.
 
 #### Bước 3: Rebase `feature-b` lên `feature-a` và giải quyết conflict
+
 1. Thực hiện lệnh rebase:
    ```bash
    git checkout feature-b
@@ -107,6 +70,7 @@ git commit -m "chore: initial commit on main"
 3. Lưu vết log sau khi rebase hoàn tất thành công vào `history.md`.
 
 #### Bước 4 & 5: Tạo branch `hotfix` và cherry-pick
+
 1. Quay về `main`, tạo branch `hotfix`.
 2. Commit 1 lỗi khẩn cấp:
    ```bash
@@ -118,6 +82,7 @@ git commit -m "chore: initial commit on main"
    ```
 3. Lấy mã SHA của commit hotfix này (`git log -n 1 --oneline`).
 4. Cherry-pick sang `main` và `feature-a`:
+
    ```bash
    # Cherry-pick sang main
    git checkout main
@@ -127,9 +92,11 @@ git commit -m "chore: initial commit on main"
    git checkout feature-a
    git cherry-pick <SHA-commit-hotfix>
    ```
+
 5. Lưu vết log ghi vào `history.md`.
 
 #### Bước 6: Squash 3 commit của `feature-a` thành 1 bằng `rebase -i`
+
 1. Đứng tại branch `feature-a`, hiện tại lịch sử bao gồm:
    - Commit của `main`
    - 3 commit phát triển của `feature-a` (file1, file2, file3)
@@ -142,7 +109,7 @@ git commit -m "chore: initial commit on main"
    - Giữ nguyên `pick` cho commit đầu tiên của `feature-a`.
    - Đổi `pick` thành `squash` (hoặc `s`) cho commit thứ 2 và thứ 3 của `feature-a`.
    - Giữ nguyên `pick` cho commit cherry-pick.
-   *Ví dụ cấu hình:*
+     _Ví dụ cấu hình:_
    ```text
    pick <SHA_1> feat(a): add file1.txt
    squash <SHA_2> feat(a): add file2.txt
@@ -157,6 +124,7 @@ git commit -m "chore: initial commit on main"
 ### Part B — Tìm lại commit bị "mất"
 
 #### Các bước thực hiện:
+
 1. Tạo 1 commit mới chứa file tạm:
    ```bash
    git checkout main
@@ -168,7 +136,7 @@ git commit -m "chore: initial commit on main"
    ```bash
    git reset --hard HEAD~1
    ```
-   *(File `lost-file.txt` biến mất khỏi thư mục làm việc và commit không còn xuất hiện trong `git log` thông thường).*
+   _(File `lost-file.txt` biến mất khỏi thư mục làm việc và commit không còn xuất hiện trong `git log` thông thường)._
 3. Sử dụng `git reflog` để quét lịch sử hành vi của con trỏ HEAD:
    ```bash
    git reflog
@@ -186,13 +154,14 @@ git commit -m "chore: initial commit on main"
 ### Part C — git bisect
 
 #### Bước 1: Viết script tự động hóa để tạo lịch sử 20 commit
-Chúng ta sẽ viết một script Python/Bash nằm ngoài git-lab (hoặc lưu trong thư mục nháp) để tạo ra nhánh `bug-hunt` từ `main`, sau đó tạo 20 commit. Commit thứ 13 sẽ chỉnh sửa file `app.py` in ra lỗi, các commit khác chỉ thêm thay đổi thứ yếu.
 
 **Nội dung logic của file `app.py`:**
+
 - Trạng thái chuẩn: `print("SYSTEM STATUS: OK")`
 - Trạng thái lỗi (bắt đầu từ commit 13): `print("SYSTEM STATUS: ERROR")`
 
 **Script tự động dựng lịch sử (`build_bisect_history.sh`):**
+
 ```bash
 git checkout main
 git checkout -b bug-hunt
@@ -212,6 +181,7 @@ done
 ```
 
 #### Bước 2: Thực hiện quy trình tìm lỗi `git bisect`
+
 1. Khởi động bisect:
    ```bash
    git bisect start
@@ -240,6 +210,7 @@ done
 ### Part D — Pre-commit hook
 
 #### Các bước cấu hình:
+
 1. Cài đặt thư viện `pre-commit` (nếu môi trường chưa cài, sử dụng `pip install pre-commit` hoặc qua trình quản lý gói của hệ thống).
 2. Tạo file cấu hình cấu hình `.pre-commit-config.yaml` tại thư mục gốc của repo `git-lab` với các hook:
    - `trailing-whitespace`
@@ -254,7 +225,7 @@ done
 4. **Kịch bản kiểm thử (Test case):**
    - Tạo file `test_hook.txt` chứa một số khoảng trắng dư thừa ở cuối dòng:
      ```text
-     Hello World   
+     Hello World
      ```
    - Tiến hành add và commit file này:
      ```bash
@@ -270,22 +241,11 @@ done
 
 Chúng ta sẽ biên soạn một báo cáo chi tiết trong file `workflow-comparison.md` để so sánh 3 mô hình workflow cốt lõi: Trunk-based, GitFlow, và GitHub Flow dựa trên bảng so sánh và các phân tích chuyên sâu.
 
-| Tiêu chí | Trunk-based Development | GitFlow | GitHub Flow |
-| :--- | :--- | :--- | :--- |
-| **Số nhánh sống dài hạn** | 1 (`main` / `trunk`) | Tối thiểu 2 (`main`, `develop`) | 1 (`main`) |
-| **Kịch bản phù hợp** | Dự án CI/CD tốc độ cao, đội ngũ kinh nghiệm, kiểm thử tự động tốt | Dự án release theo phiên bản định kỳ (on-premise, app mobile), quy trình QA nghiêm ngặt | Dự án web SaaS, deploy liên tục, mô hình đóng góp pull request |
-| **Tần suất Release** | Hàng ngày / Hàng giờ (Deploy liên tục) | Theo chu kỳ tuần/tháng/quý (Scheduled) | Bất cứ khi nào merge PR (Continuous Delivery) |
-| **Khó khăn áp dụng** | Đòi hỏi kỹ thuật Feature Flag tốt, kỷ luật code cao, test suite phải cực nhanh và đủ tin cậy | Quản lý nhánh phức tạp, dễ gặp "merge hell" khi merge các nhánh dài hạn, tốn nhiều chi phí quản lý | Dễ làm vỡ môi trường production nếu hệ thống kiểm thử tự động của PR không vững chắc |
+| Tiêu chí                  | Trunk-based Development                                                                      | GitFlow                                                                                            | GitHub Flow                                                                          |
+| :------------------------ | :------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
+| **Số nhánh sống dài hạn** | 1 (`main` / `trunk`)                                                                         | Tối thiểu 2 (`main`, `develop`)                                                                    | 1 (`main`)                                                                           |
+| **Kịch bản phù hợp**      | Dự án CI/CD tốc độ cao, đội ngũ kinh nghiệm, kiểm thử tự động tốt                            | Dự án release theo phiên bản định kỳ (on-premise, app mobile), quy trình QA nghiêm ngặt            | Dự án web SaaS, deploy liên tục, mô hình đóng góp pull request                       |
+| **Tần suất Release**      | Hàng ngày / Hàng giờ (Deploy liên tục)                                                       | Theo chu kỳ tuần/tháng/quý (Scheduled)                                                             | Bất cứ khi nào merge PR (Continuous Delivery)                                        |
+| **Khó khăn áp dụng**      | Đòi hỏi kỹ thuật Feature Flag tốt, kỷ luật code cao, test suite phải cực nhanh và đủ tin cậy | Quản lý nhánh phức tạp, dễ gặp "merge hell" khi merge các nhánh dài hạn, tốn nhiều chi phí quản lý | Dễ làm vỡ môi trường production nếu hệ thống kiểm thử tự động của PR không vững chắc |
 
 ---
-
-## 📅 Kế hoạch triển khai & Nộp bài
-
-### Phân rã công việc (Task breakdown):
-1. **Bước 1**: Tạo thư mục, cấu hình `.gitignore` và khởi tạo repo `git-lab`.
-2. **Bước 2**: Thực hiện Part A (các bước rebase, cherry-pick, squash) và ghi nhận nhật ký vào `history.md`.
-3. **Bước 3**: Thực hiện Part B (xóa commit giả định, dùng reflog khôi phục) và lập hồ sơ `reflog-lab.md`.
-4. **Bước 4**: Thực hiện Part C (tạo lịch sử lỗi tự động bằng script, chạy bisect tìm lỗi) và ghi log vào `bisect.log`.
-5. **Bước 5**: Thực hiện Part D (cấu hình pre-commit, viết test case, chụp terminal block) và xuất ảnh sang `screenshots/`.
-6. **Bước 6**: Thực hiện Part E (so sánh workflow chi tiết bằng từ ngữ phân tích thực tế) tại `workflow-comparison.md`.
-7. **Bước 7**: Tạo và cập nhật `README.md` tại `day-3-git/` để mô tả tổng quan và link tới repository `git-lab` trên GitHub.
