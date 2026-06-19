@@ -1,0 +1,15 @@
+[Unit]
+Description=Monitoring service for linux advanced lab
+
+[Service]
+Type=simple
+User=lozshi
+WorkingDirectory=/home/lozshi/devops-training-duy/phase-1/week-1/day-2-linux-advanced
+ExecStart=/home/lozshi/devops-training-duy/phase-1/week-1/day-2-linux-advanced/monitor.sh
+Restart=always
+RestartSec=5
+# Gửi tín hiệu SIGINT để tắt (Graceful Exit) khớp với trap SIGINT trong monitor.sh
+KillSignal=SIGINT
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=monitoring_lab

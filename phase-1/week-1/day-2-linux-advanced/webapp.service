@@ -1,0 +1,17 @@
+[Unit]
+Description=Python HTTP Server for linux advanced lab
+After=network.target
+
+[Service]
+Type=simple
+User=lozshi
+WorkingDirectory=/home/lozshi/devops-training-duy/phase-1/week-1/day-2-linux-advanced
+ExecStart=/usr/bin/python3 /home/lozshi/devops-training-duy/phase-1/week-1/day-2-linux-advanced/server.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=webapp-server
+
+[Install]
+WantedBy=multi-user.target 
