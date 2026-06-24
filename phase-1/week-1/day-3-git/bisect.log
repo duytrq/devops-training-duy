@@ -1,0 +1,35 @@
+❯ git bisect start
+❯ git bisect bad
+❯ git bisect good 31d71c653cc8e7c71de7c4b11fd00d2597d26956
+Bisecting: 9 revisions left to test after this (roughly 3 steps)
+[ed79b8461d68f671e98bceaed866d7dfe493b4f6] feat: commit index 10
+❯ git bisect good
+Bisecting: 4 revisions left to test after this (roughly 2 steps)
+[6a7b9fe27bde30bf2769ae83af911d5f280af149] feat: commit index 15
+❯ python3 app.py
+SYSTEM STATUS: ERROR
+❯ git bisect bad
+Bisecting: 2 revisions left to test after this (roughly 1 step)
+[50a8f870bfb4f24126c4bd614a9b95138254dd0f] feat: commit index 12
+❯ python3 app.py
+SYSTEM STATUS: OK
+❯ git bisect good
+Bisecting: 0 revisions left to test after this (roughly 1 step)
+[1ec35da0849adc5021ba8dac4368d556e0cbe3a2] feat: commit index 14
+❯ python3 app.py
+SYSTEM STATUS: ERROR
+❯ git bisect bad
+Bisecting: 0 revisions left to test after this (roughly 0 steps)
+[3533dae6fe43c14ccbe15dbaac7223cdbba132a8] feat: commit index 13
+❯ python3 app.py
+SYSTEM STATUS: ERROR
+❯ git bisect bad
+3533dae6fe43c14ccbe15dbaac7223cdbba132a8 is the first bad commit
+commit 3533dae6fe43c14ccbe15dbaac7223cdbba132a8
+Author: lozshi <quangduy16072005@gmail.com>
+Date:   Fri Jun 19 10:25:52 2026 +0700
+
+    feat: commit index 13
+
+ app.py | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
