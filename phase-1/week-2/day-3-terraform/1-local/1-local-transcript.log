@@ -1,0 +1,290 @@
+Script started on 2026-06-24 22:53:49+07:00 [TERM="screen-256color" TTY="/dev/pts/8" COLUMNS="188" LINES="45"]
+[1m[3m%[23m[1m[0m                                                                                                                                                                                            k..aform/1-local\]7;file://lozshi/home/lozshi/devops-training-duy/phase-1/week-2/day-3-terraform/1-local\[0m[23m[24m[J[0m[49m[39m
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                               [0m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[?1h=[6 q[6 q[?2004h[1m[31mt[0m[39m[6 q[1m[31mt[0m[39m[90merraform init[39m[13D[1m[31mt[1m[31me[0m[39m[6 q[1m[31mt[1m[31me[1m[31mr[0m[39m[6 q[1m[31mr[1m[31mr[0m[39m[6 q[1m[31mr[1m[31ma[0m[39m[6 q[1m[31ma[1m[31mf[0m[39m[6 q[1m[31mf[1m[31mo[0m[39m[6 q[1m[31mo[1m[31mr[0m[39m[6 q[8D[0m[32mt[0m[32me[0m[32mr[0m[32mr[0m[32ma[0m[32mf[0m[32mo[0m[32mr[32mm[39m[6 q[?25lM[0m[23m[24m[J[0m[49m[39m
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                               [0m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[32mterraform[39m[90m init[39m[K[?25h[39m [6 q[39mi[6 q[39mn[6 q[39mi[6 q[39mt[6 q[6 q[?1l>[0 q[?25l[?2004lM[0m[23m[24m[J[0m[49m[23m[24m[38;5;76m❯[0m[38;5;76m[49m[39m[23m[24m [32mterraform[39m init[K[?25h
+kterraform\[0m[1mInitializing provider plugins found in the configuration...[0m
+- Reusing previous version of hashicorp/random from the dependency lock file
+- Reusing previous version of hashicorp/local from the dependency lock file
+- Using previously-installed hashicorp/local v2.9.0
+- Using previously-installed hashicorp/random v3.9.0
+
+[0m[1mInitializing the backend...[0m
+
+
+
+[0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+[0m[32m
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.[0m
+[1m[3m%[23m[1m[0m                                                                                                                                                                                            k..aform/1-local\]7;file://lozshi/home/lozshi/devops-training-duy/phase-1/week-2/day-3-terraform/1-local\[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                               [0m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[?1h=[6 q[6 q[?2004h[1m[31mt[0m[39m[6 q[1m[31mt[0m[39m[90merraform init[39m[13D[1m[31mt[1m[31me[0m[39m[6 q[1m[31mt[1m[31me[1m[31mr[0m[39m[6 q[1m[31mr[1m[31mr[0m[39m[6 q[1m[31mr[1m[31ma[0m[39m[6 q[1m[31ma[1m[31mf[0m[39m[6 q[1m[31mf[1m[31mo[0m[39m[6 q[1m[31mo[1m[31mr[0m[39m[6 q[8D[0m[32mt[0m[32me[0m[32mr[0m[32mr[0m[32ma[0m[32mf[0m[32mo[0m[32mr[32mm[39m[6 q[?25lMM[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                               [0m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[32mterraform[39m[90m init[39m[K[?25h[39m [6 q[39mp[39m [39m [39m [6 q[90mlan[39m[39ml[6 q[39ma[6 q[39mn[6 q[6 q[?1l>[0 q[?25l[?2004lMM[0m[23m[24m[J[0m[49m[23m[24m[38;5;76m❯[0m[38;5;76m[49m[39m[23m[24m [32mterraform[39m plan[K[?25h
+kterraform\
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # local_file.hello[0m will be created
+[0m  [32m+[0m[0m resource "local_file" "hello" {
+      [32m+[0m[0m content              = (known after apply)
+      [32m+[0m[0m content_base64sha256 = (known after apply)
+      [32m+[0m[0m content_base64sha512 = (known after apply)
+      [32m+[0m[0m content_md5          = (known after apply)
+      [32m+[0m[0m content_sha1         = (known after apply)
+      [32m+[0m[0m content_sha256       = (known after apply)
+      [32m+[0m[0m content_sha512       = (known after apply)
+      [32m+[0m[0m directory_permission = "0777"
+      [32m+[0m[0m file_permission      = "0777"
+      [32m+[0m[0m filename             = (known after apply)
+      [32m+[0m[0m id                   = (known after apply)
+    }
+
+[1m  # random_pet.name[0m will be created
+[0m  [32m+[0m[0m resource "random_pet" "name" {
+      [32m+[0m[0m id        = (known after apply)
+      [32m+[0m[0m length    = 2
+      [32m+[0m[0m separator = "-"
+    }
+
+[1mPlan:[0m [0m2 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  [32m+[0m[0m file_path = (known after apply)
+[90m
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+[1m[3m%[23m[1m[0m                                                                                                                                                                                            k..aform/1-local\]7;file://lozshi/home/lozshi/devops-training-duy/phase-1/week-2/day-3-terraform/1-local\[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                               [0m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[?1h=[6 q[6 q[?2004h[1m[31mt[0m[39m[6 q[1m[31mt[0m[39m[90merraform plan[39m[13D[1m[31mt[1m[31me[0m[39m[6 q[1m[31mt[1m[31me[1m[31mr[0m[39m[6 q[1m[31mr[1m[31mr[0m[39m[6 q[1m[31mr[1m[31ma[0m[39m[6 q[1m[31ma[1m[31mf[0m[39m[6 q[1m[31mf[1m[31mo[0m[39m[6 q[1m[31mo[1m[31mr[0m[39m[6 q[8D[0m[32mt[0m[32me[0m[32mr[0m[32mr[0m[32ma[0m[32mf[0m[32mo[0m[32mr[32mm[39m[6 q[?25lMM[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                               [0m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[32mterraform[39m[90m plan[39m[K[?25h[39m [6 q[39ma[39m [39m [39m [6 qp[6 qp[6 ql[6 qy[6 q[6 q[?1l>[0 q[?25l[?2004lMM[0m[23m[24m[J[0m[49m[23m[24m[38;5;76m❯[0m[38;5;76m[49m[39m[23m[24m [32mterraform[39m apply[K[?25h
+kterraform\
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # local_file.hello[0m will be created
+[0m  [32m+[0m[0m resource "local_file" "hello" {
+      [32m+[0m[0m content              = (known after apply)
+      [32m+[0m[0m content_base64sha256 = (known after apply)
+      [32m+[0m[0m content_base64sha512 = (known after apply)
+      [32m+[0m[0m content_md5          = (known after apply)
+      [32m+[0m[0m content_sha1         = (known after apply)
+      [32m+[0m[0m content_sha256       = (known after apply)
+      [32m+[0m[0m content_sha512       = (known after apply)
+      [32m+[0m[0m directory_permission = "0777"
+      [32m+[0m[0m file_permission      = "0777"
+      [32m+[0m[0m filename             = (known after apply)
+      [32m+[0m[0m id                   = (known after apply)
+    }
+
+[1m  # random_pet.name[0m will be created
+[0m  [32m+[0m[0m resource "random_pet" "name" {
+      [32m+[0m[0m id        = (known after apply)
+      [32m+[0m[0m length    = 2
+      [32m+[0m[0m separator = "-"
+    }
+
+[1mPlan:[0m [0m2 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  [32m+[0m[0m file_path = (known after apply)
+[0m[1m
+Do you want to perform these actions?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0myes
+
+[0m[1mrandom_pet.name: Creating...[0m[0m
+[0m[1mrandom_pet.name: Creation complete after 0s [id=better-antelope][0m
+[0m[1mlocal_file.hello: Creating...[0m[0m
+[0m[1mlocal_file.hello: Creation complete after 0s [id=458b458b56f55dcaee7c416d454d73abdf3165ee][0m
+[0m[1m[32m
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.[0m
+[0m[1m[32m
+Outputs:
+
+[0mfile_path = "./out/hello-better-antelope.txt"
+[1m[3m%[23m[1m[0m                                                                                                                                                                                            k..aform/1-local\]7;file://lozshi/home/lozshi/devops-training-duy/phase-1/week-2/day-3-terraform/1-local\[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                 [0m[49m[38;5;101m[39mtook [0m[49m[38;5;101m  1m 16s[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[?1h=[6 q[6 q[?2004h[32mterraform[39m apply[6 q[?25lMM[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                 [0m[49m[38;5;101m[39mtook [0m[49m[38;5;101m  1m 16s[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[32mterraform[39m apply[K[?25hplan [6 q[6 q[?1l>[0 q[?25l[?2004lMM[0m[23m[24m[J[0m[49m[23m[24m[38;5;76m❯[0m[38;5;76m[49m[39m[23m[24m [32mterraform[39m plan[K[?25h
+kterraform\[0m[1mrandom_pet.name: Refreshing state... [id=better-antelope][0m
+[0m[1mlocal_file.hello: Refreshing state... [id=458b458b56f55dcaee7c416d454d73abdf3165ee][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+[31m-[0m/[32m+[0m destroy and then create replacement[0m
+
+Terraform will perform the following actions:
+
+[1m  # local_file.hello[0m must be [1m[31mreplaced[0m
+[0m[31m-[0m/[32m+[0m[0m resource "local_file" "hello" {
+      [33m~[0m[0m content              = "Hello from terraform, better-antelope!" -> (known after apply) [31m# forces replacement[0m[0m
+      [33m~[0m[0m content_base64sha256 = "KDFrkqoQcdqcVZglafll6QwME5+2MMJjvq4wVroVwJw=" -> (known after apply)
+      [33m~[0m[0m content_base64sha512 = "r4f94MuBJz2dQbALVW6D+crZ8pQ1BVw0no28LE6UVyG/ZvR36ZlXRc5H5XBjJ+cVffdtzEt0FKLEyvJHTEOCIQ==" -> (known after apply)
+      [33m~[0m[0m content_md5          = "a497d0be26594d14147c03a763d18fed" -> (known after apply)
+      [33m~[0m[0m content_sha1         = "458b458b56f55dcaee7c416d454d73abdf3165ee" -> (known after apply)
+      [33m~[0m[0m content_sha256       = "28316b92aa1071da9c55982569f965e90c0c139fb630c263beae3056ba15c09c" -> (known after apply)
+      [33m~[0m[0m content_sha512       = "af87fde0cb81273d9d41b00b556e83f9cad9f29435055c349e8dbc2c4e945721bf66f477e9995745ce47e5706327e7157df76dcc4b7414a2c4caf2474c438221" -> (known after apply)
+      [33m~[0m[0m filename             = "./out/hello-better-antelope.txt" -> (known after apply) [31m# forces replacement[0m[0m
+      [33m~[0m[0m id                   = "458b458b56f55dcaee7c416d454d73abdf3165ee" -> (known after apply)
+        [90m# (2 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # random_pet.name[0m must be [1m[31mreplaced[0m
+[0m[31m-[0m/[32m+[0m[0m resource "random_pet" "name" {
+      [33m~[0m[0m id        = "better-antelope" -> (known after apply)
+      [33m~[0m[0m length    = 2 [33m->[0m[0m 3 [31m# forces replacement[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1mPlan:[0m [0m2 to add, 0 to change, 2 to destroy.
+
+Changes to Outputs:
+  [33m~[0m[0m file_path = "./out/hello-better-antelope.txt" -> (known after apply)
+[90m
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+[1m[3m%[23m[1m[0m                                                                                                                                                                                            k..aform/1-local\]7;file://lozshi/home/lozshi/devops-training-duy/phase-1/week-2/day-3-terraform/1-local\[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                               [0m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[?1h=[6 q[6 q[?2004h[1m[31mt[0m[39m[6 q[1m[31mt[0m[39m[90merraform plan[39m[13D[1m[31mt[1m[31me[0m[39m[6 q[1m[31mt[1m[31me[1m[31mr[0m[39m[6 q[1m[31mr[1m[31mr[0m[39m[6 q[1m[31mr[1m[31ma[0m[39m[6 q[1m[31ma[1m[31mf[0m[39m[6 q[1m[31mf[1m[31mo[0m[39m[6 q[1m[31mo[1m[31mr[0m[39m[6 q[8D[0m[32mt[0m[32me[0m[32mr[0m[32mr[0m[32ma[0m[32mf[0m[32mo[0m[32mr[32mm[39m[6 q[?25lMM[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                               [0m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[32mterraform[39m[90m plan[39m[K[?25h[39m [6 q[39mp[6 q[39ml[6 q [39m [39m [6 q[90mlan[39m [39m [39m [39m [6 q[90mplan[39m[39ma[39m [39m [39m [6 q[90mpply[39m[39mp[6 q[39mp[6 q[39ml[6 q[39my[6 q[6 q[?1l>[0 q[?25l[?2004lMM[0m[23m[24m[J[0m[49m[23m[24m[38;5;76m❯[0m[38;5;76m[49m[39m[23m[24m [32mterraform[39m apply[K[?25h
+kterraform\[0m[1mrandom_pet.name: Refreshing state... [id=better-antelope][0m
+[0m[1mlocal_file.hello: Refreshing state... [id=458b458b56f55dcaee7c416d454d73abdf3165ee][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+[31m-[0m/[32m+[0m destroy and then create replacement[0m
+
+Terraform will perform the following actions:
+
+[1m  # local_file.hello[0m must be [1m[31mreplaced[0m
+[0m[31m-[0m/[32m+[0m[0m resource "local_file" "hello" {
+      [33m~[0m[0m content              = "Hello from terraform, better-antelope!" -> (known after apply) [31m# forces replacement[0m[0m
+      [33m~[0m[0m content_base64sha256 = "KDFrkqoQcdqcVZglafll6QwME5+2MMJjvq4wVroVwJw=" -> (known after apply)
+      [33m~[0m[0m content_base64sha512 = "r4f94MuBJz2dQbALVW6D+crZ8pQ1BVw0no28LE6UVyG/ZvR36ZlXRc5H5XBjJ+cVffdtzEt0FKLEyvJHTEOCIQ==" -> (known after apply)
+      [33m~[0m[0m content_md5          = "a497d0be26594d14147c03a763d18fed" -> (known after apply)
+      [33m~[0m[0m content_sha1         = "458b458b56f55dcaee7c416d454d73abdf3165ee" -> (known after apply)
+      [33m~[0m[0m content_sha256       = "28316b92aa1071da9c55982569f965e90c0c139fb630c263beae3056ba15c09c" -> (known after apply)
+      [33m~[0m[0m content_sha512       = "af87fde0cb81273d9d41b00b556e83f9cad9f29435055c349e8dbc2c4e945721bf66f477e9995745ce47e5706327e7157df76dcc4b7414a2c4caf2474c438221" -> (known after apply)
+      [33m~[0m[0m filename             = "./out/hello-better-antelope.txt" -> (known after apply) [31m# forces replacement[0m[0m
+      [33m~[0m[0m id                   = "458b458b56f55dcaee7c416d454d73abdf3165ee" -> (known after apply)
+        [90m# (2 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # random_pet.name[0m must be [1m[31mreplaced[0m
+[0m[31m-[0m/[32m+[0m[0m resource "random_pet" "name" {
+      [33m~[0m[0m id        = "better-antelope" -> (known after apply)
+      [33m~[0m[0m length    = 2 [33m->[0m[0m 3 [31m# forces replacement[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1mPlan:[0m [0m2 to add, 0 to change, 2 to destroy.
+
+Changes to Outputs:
+  [33m~[0m[0m file_path = "./out/hello-better-antelope.txt" -> (known after apply)
+[0m[1m
+Do you want to perform these actions?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0myes
+
+[0m[1mlocal_file.hello: Destroying... [id=458b458b56f55dcaee7c416d454d73abdf3165ee][0m[0m
+[0m[1mlocal_file.hello: Destruction complete after 0s[0m
+[0m[1mrandom_pet.name: Destroying... [id=better-antelope][0m[0m
+[0m[1mrandom_pet.name: Destruction complete after 0s[0m
+[0m[1mrandom_pet.name: Creating...[0m[0m
+[0m[1mrandom_pet.name: Creation complete after 0s [id=blatantly-delicate-wren][0m
+[0m[1mlocal_file.hello: Creating...[0m[0m
+[0m[1mlocal_file.hello: Creation complete after 0s [id=5f646377b8dd5e05202c98c59c96828697b86456][0m
+[0m[1m[32m
+Apply complete! Resources: 2 added, 0 changed, 2 destroyed.[0m
+[0m[1m[32m
+Outputs:
+
+[0mfile_path = "./out/hello-blatantly-delicate-wren.txt"
+[1m[3m%[23m[1m[0m                                                                                                                                                                                            k..aform/1-local\]7;file://lozshi/home/lozshi/devops-training-duy/phase-1/week-2/day-3-terraform/1-local\[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                     [0m[49m[38;5;101m[39mtook [0m[49m[38;5;101m  4s[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[?1h=[6 q[6 q[?2004h[1m[31mt[0m[39m[6 q[1m[31mt[0m[39m[90merraform apply[39m[14D[1m[31mt[1m[31me[0m[39m[6 q[1m[31mt[1m[31me[1m[31mr[0m[39m[6 q[1m[31mr[1m[31mr[0m[39m[6 q[1m[31mr[1m[31ma[0m[39m[6 q[1m[31ma[1m[31mf[0m[39m[6 q[1m[31mf[1m[31mo[0m[39m[6 q[1m[31mo[1m[31mr[0m[39m[6 q[8D[0m[32mt[0m[32me[0m[32mr[0m[32mr[0m[32ma[0m[32mf[0m[32mo[0m[32mr[32mm[39m[6 q[?25lMM[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                     [0m[49m[38;5;101m[39mtook [0m[49m[38;5;101m  4s[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[32mterraform[39m[90m apply[39m[K[?25h[39m [6 q[39md[39m [39m [39m [39m [6 qe[6 qs[6 qt[6 qr[6 qo[6 qy[6 q[6 q[?1l>[0 q[?25l[?2004lMM[0m[23m[24m[J[0m[49m[23m[24m[38;5;76m❯[0m[38;5;76m[49m[39m[23m[24m [32mterraform[39m destroy[K[?25h
+kterraform\[0m[1mrandom_pet.name: Refreshing state... [id=blatantly-delicate-wren][0m
+[0m[1mlocal_file.hello: Refreshing state... [id=5f646377b8dd5e05202c98c59c96828697b86456][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # local_file.hello[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "local_file" "hello" {
+      [31m-[0m[0m content              = "Hello from terraform, blatantly-delicate-wren!" [90m-> null[0m[0m
+      [31m-[0m[0m content_base64sha256 = "TGlqKZ7nRSOvJeZ4jEU9P/mhZdixYFo1QwCovkm8pM0=" [90m-> null[0m[0m
+      [31m-[0m[0m content_base64sha512 = "mOgKubE4Nqa60lR2b6cgLUX+vBpK0jgaWkP6x7pE2tva2BCQzA6l4eNJo3bHauelN43+BWkEO9sbDRvYdK8j5w==" [90m-> null[0m[0m
+      [31m-[0m[0m content_md5          = "ccd9b357491132fcb3f9107afc58c383" [90m-> null[0m[0m
+      [31m-[0m[0m content_sha1         = "5f646377b8dd5e05202c98c59c96828697b86456" [90m-> null[0m[0m
+      [31m-[0m[0m content_sha256       = "4c696a299ee74523af25e6788c453d3ff9a165d8b1605a354300a8be49bca4cd" [90m-> null[0m[0m
+      [31m-[0m[0m content_sha512       = "98e80ab9b13836a6bad254766fa7202d45febc1a4ad2381a5a43fac7ba44dadbdad81090cc0ea5e1e349a376c76ae7a5378dfe0569043bdb1b0d1bd874af23e7" [90m-> null[0m[0m
+      [31m-[0m[0m directory_permission = "0777" [90m-> null[0m[0m
+      [31m-[0m[0m file_permission      = "0777" [90m-> null[0m[0m
+      [31m-[0m[0m filename             = "./out/hello-blatantly-delicate-wren.txt" [90m-> null[0m[0m
+      [31m-[0m[0m id                   = "5f646377b8dd5e05202c98c59c96828697b86456" [90m-> null[0m[0m
+    }
+
+[1m  # random_pet.name[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "random_pet" "name" {
+      [31m-[0m[0m id        = "blatantly-delicate-wren" [90m-> null[0m[0m
+      [31m-[0m[0m length    = 3 [90m-> null[0m[0m
+      [31m-[0m[0m separator = "-" [90m-> null[0m[0m
+    }
+
+[1mPlan:[0m [0m0 to add, 0 to change, 2 to destroy.
+
+Changes to Outputs:
+  [31m-[0m[0m file_path = "./out/hello-blatantly-delicate-wren.txt" [90m-> null[0m[0m
+[0m[1m
+Do you really want to destroy all resources?[0m
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  [1mEnter a value:[0m [0myes
+
+[0m[1mlocal_file.hello: Destroying... [id=5f646377b8dd5e05202c98c59c96828697b86456][0m[0m
+[0m[1mlocal_file.hello: Destruction complete after 0s[0m
+[0m[1mrandom_pet.name: Destroying... [id=blatantly-delicate-wren][0m[0m
+[0m[1mrandom_pet.name: Destruction complete after 0s[0m
+[0m[1m[32m
+Destroy complete! Resources: 2 destroyed.[0m
+[1m[3m%[23m[1m[0m                                                                                                                                                                                            k..aform/1-local\]7;file://lozshi/home/lozshi/devops-training-duy/phase-1/week-2/day-3-terraform/1-local\[0m[23m[24m[J[0m[49m[39m
+
+M[0m[49m[39m [0m[49m[39m[0m[49m [0m[49m[38;5;31m  [1m[38;5;31m[38;5;39m~[0m[38;5;39m[49m[38;5;31m/[1m[38;5;31m[38;5;39mdevops-training-duy[0m[38;5;39m[49m[38;5;31m/phase-1/week-2/day-3-terraform/[1m[38;5;31m[38;5;39m1-local[0m[38;5;39m[49m[38;5;31m[0m[38;5;31m[49m[38;5;31m[0m[38;5;31m[49m [0m[38;5;31m[49m[38;5;76m[39mon [0m[49m[38;5;76m  [38;5;76m phase-1/week-2/day-3-terraform [38;5;39m?2[0m[38;5;39m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m                                                                     [0m[49m[38;5;101m[39mtook [0m[49m[38;5;101m  8s[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[38;5;101m[0m[38;5;101m[49m[39m
+[0m[49m[38;5;76m❯[0m[38;5;76m[49m[38;5;76m[0m[38;5;76m[49m[30m[0m[30m[49m[39m [0m[49m[39m[K[?1h=[6 q[6 q[?2004h[1m[31me[0m[39m[6 q[1m[31me[0m[39m[90mnv[39m[0m[32me[32mx[39m[39m [6 q[90mport AWS_SECRET_ACCESS_KEY=AgVU9i0af4dKEdbp6J8Dhv1K+yf/y0BYT+Kbkc+V[39m
+[KM[4C[1m[31me[1m[31mx[1m[31mi[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [1B[KM[5C[6 q[90mt[39m[0m[32me[0m[32mx[0m[32mi[32mt[39m[6 q[6 q[?1l>[0 q[?25l[?2004lMM[0m[23m[24m[J[0m[49m[23m[24m[38;5;76m❯[0m[38;5;76m[49m[39m[23m[24m [32mexit[39m[K[?25h
+kexit\
+Script done on 2026-06-24 23:02:16+07:00 [COMMAND_EXIT_CODE="0"]
