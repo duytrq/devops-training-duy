@@ -2,7 +2,7 @@
 
 - **Intern**: Trương Quang Duy
 - **Phase/Week/Day**: phase-1/week-2/day-4-aws-basics
-- **Branch**: phase-1/week-2/aws-basics
+- **Branch**: phase-1/week-2/day-4-aws-basics
 - **Submitted at**: 2026-06-27
 - **Time spent**: 6h
 
@@ -10,26 +10,11 @@
 
 Hiểu IAM (user, group, role, policy, trust policy). Hiểu hơn về S3: bucket policy, static site, presigned URL. Nắm sơ đồ VPC, subnet public/private, NAT, IGW. Biết khái niệm: region, AZ, edge location.
 
-## Part A — IAM (notes.md)
+# Cách chạy và triển khai
 
-1. Phân biệt: user, group, role, policy.
-2. Trust policy vs identity policy vs resource policy?
-3. Tại sao IAM role tốt hơn IAM user key cho EC2/CI/CD?
-4. Đọc 1 policy JSON sau & giải thích từng trường:
-   ```json
-   {
-     "Version": "2012-10-17",
-     "Statement": [
-       {
-         "Effect": "Allow",
-         "Action": ["s3:GetObject"],
-         "Resource": "arn:aws:s3:::my-bucket/*",
-         "Condition": { "IpAddress": { "aws:SourceIp": "203.0.113.0/24" } }
-       }
-     ]
-   }
-   ```
-5. Khi 1 user nằm trong group có Allow, và policy gắn trực tiếp user có Deny — kết quả?
+## Part A — IAM
+
+Trả lời các câu hỏi trong [này](./notes.md)
 
 ## Part B — Lab IAM
 
@@ -60,11 +45,6 @@ Thực hiện tạo bucket và config trên s3 console với các bước sau:
 3. Bật static website hosting
 
    Cấu hình S3 website hosting với `index.html` và `error.html`:
-
-   Giải thích:
-   - `--index-document index.html`: khi truy cập endpoint gốc, S3 trả về `index.html`.
-   - `--error-document error.html`: khi truy cập path lỗi, S3 trả về trang lỗi này.
-   - S3 website hosting dùng website endpoint riêng, ví dụ dạng `http://<bucket>.s3-website-<region>.amazonaws.com`.
 
 4. Upload file lên bucket
 
@@ -117,8 +97,6 @@ Thực hiện tạo bucket và config trên s3 console với các bước sau:
 
 ### Kết quả:
 
-Triển khai:
-
 ![](./screenshots/s3_static_website.png)
 
 ![](./screenshots/s3_static_error.png)
@@ -129,7 +107,7 @@ Triển khai:
 
 Cấu hình:
 
-- **Bucket name**: đặt theo format `private-<tên>-<random>`, ví dụ `private-duy-12345`.
+- **Bucket name**: đặt theo format `private-<tên>-<random>`.
 - **AWS Region**: `ap-southeast-1`.
 - **Object Ownership**: để mặc định `ACLs disabled`.
 - **Block Public Access settings**: giữ **Block all public access** là **ON**.
@@ -138,7 +116,7 @@ Cấu hình:
 
 Giải thích:
 
-- Bucket này phải private vì mục tiêu là test presigned URL, không phải public website.
+- Bucket này private vì mục tiêu là test presigned URL, không phải public website.
 - Block Public Access ON nghĩa là người ngoài không thể đọc object trực tiếp.
 - Presigned URL không làm bucket public. Nó chỉ tạo một URL tạm thời được ký bằng quyền của IAM principal tạo URL.
 
@@ -211,18 +189,17 @@ Giải thích:
 - `Key` là object key, ở đây là `test_presign.txt`.
 - `ExpiresIn=300` tạo URL hết hạn sau 5 phút.
 
-## Part E — VPC topology (notes.md)
+## Part E — VPC topology
 
-Vẽ ASCII / mermaid diagram cho mô hình:
+Trả lời các câu hỏi trong [này](./notes.md)
 
-- 1 VPC.
-- 2 public subnet + 2 private subnet (2 AZ).
-- IGW, NAT GW, route table.
-- 1 ALB ở public, 2 EC2 backend ở private.
+# Reference
 
-Giải thích: tại sao backend phải ở private subnet? Outbound internet qua đâu?
+- [iam best practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
+- [s3 static site hosting](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
+- [vpc](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 
-## ✅ Pass criteria
+# Self check
 
 - [x] IAM user `test-ro` bị Deny đúng theo policy.
 - [x] Static site truy cập được public.
