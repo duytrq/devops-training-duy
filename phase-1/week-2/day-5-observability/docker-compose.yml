@@ -1,0 +1,38 @@
+services:
+  prometheus:
+    image: prom/prometheus:v2.55.0
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - '9090:9090'
+    depends_on:
+      - node-exporter
+      - blackbox-exporter
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - '3000:3000'
+    restart: unless-stopped
+
+  node-exporter:
+    image: prom/node-exporter:v1.8.0
+    ports:
+      - '9100:9100'
+    restart: unless-stopped
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter:v0.25.0
+    ports:
+      - '9115:9115'
+    restart: unless-stopped
+
+volumes:
+  prometheus-data:
+  grafana-data:
