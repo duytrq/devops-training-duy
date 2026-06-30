@@ -3,7 +3,7 @@
 - **Intern**: Trương Quang Duy
 - **Phase/Week/Day**: phase-1/week-2/day-5-observability
 - **Branch**: phase-1/week-2/day-5-observability
-- **Submitted at**: 2026-06-27
+- **Submitted at**: 2026-06-30
 - **Time spent**: 5h
 
 ## Mục tiêu
@@ -51,7 +51,7 @@ export ra file `json` [dashboard](./day-5-dashboard-1782562693472.json)
 
 ### Part D — Alert
 
-Xem tại [đây](alerts.md).
+Xem tại [đây](alerts.md)
 
 ## Khó khăn
 
