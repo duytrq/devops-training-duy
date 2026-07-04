@@ -1,4 +1,4 @@
-# Task: Aws Basics
+# Task: K8s Deep dive
 
 - **Intern**: Trương Quang Duy
 - **Phase/Week/Day**: phase-2/week-3/k8s
