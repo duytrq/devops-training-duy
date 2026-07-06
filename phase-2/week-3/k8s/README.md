@@ -1,14 +1,16 @@
-# Task: K8s Deep dive
+# Task: K8s Deep dive P2
 
 - **Intern**: Trương Quang Duy
 - **Phase/Week/Day**: phase-2/week-3/k8s
 - **Branch**: phase-2/week-3/k8s
-- **Submitted at**: 2026-07-03
+- **Submitted at**: 2026-07-06
 - **Time spent**: 6h
 
 # Mục tiêu
 
-Triển khai demo-app trên k3d bằng deployment rollout, tạo services Cluster IP, Ingress và tạo TLS cert cho demoapp
+P1: Triển khai demo-app trên k3d bằng deployment rollout, tạo services Cluster IP, Ingress và tạo TLS cert cho demoapp
+
+P2: Sử dụng HPA để autoscale deployment, đóng gói ứng dụng bằng Helm và deploy bằng Helm Chart
 
 Image được lấy từ repo: https://github.com/duytrq/cicd_basics/pkgs/container/demo-app
 
@@ -238,4 +240,115 @@ kubectl describe ingress demo-app-ingress
 curl --cacert .certs/demo.local.crt \
   --resolve demo.local:8443:127.0.0.1 \
   https://demo.local:8443/health
+```
+
+## 6. Horizontal Pod Autoscaler (HPA)
+
+Để tự động điều chỉnh số lượng replica của `demo-app-deployment` dựa trên mức sử dụng CPU thực tế, ta sử dụng Horizontal Pod Autoscaler (HPA).
+
+### 6.1 File cấu hình HPA (`hpa.yml`)
+
+Nội dung file [hpa.yml](./hpa.yml):
+
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: demo-app-deployment
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo-app-deployment
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+```
+
+### 6.2 Áp dụng và kiểm tra HPA
+
+Triển khai HPA:
+
+```bash
+kubectl apply -f hpa.yml
+```
+
+Kiểm tra trạng thái HPA:
+
+```bash
+kubectl get hpa
+```
+
+Xem chi tiết hoạt động của HPA:
+
+```bash
+kubectl describe hpa demo-app-deployment
+```
+
+Để giả lập tải (load testing) và kiểm tra khả năng tự động scale:
+
+```bash
+# Chạy một pod tạm để bắn request liên tục tạo tải
+kubectl run load-generator \
+  --image=busybox:1.36 \
+  --restart=Never \
+  -- /bin/sh -c "while true; do wget -q -O- http://demo-app/health > /dev/null; done"
+```
+
+Theo dõi sự thay đổi của replicas:
+
+```bash
+kubectl get hpa -w
+```
+
+## 7. Quản lý và đóng gói ứng dụng bằng Helm Chart
+
+Để dễ dàng quản lý phiên bản, cấu hình động và tái sử dụng, toàn bộ tài nguyên trên đã được đóng gói thành một Helm Chart đặt trong thư mục [`demo-app/`](./demo-app).
+
+### 7.1 Cấu trúc thư mục Helm Chart
+
+```text
+demo-app/
+├── Chart.yaml          # Thông tin metadata của Chart (tên, phiên bản, appVersion)
+├── values.yaml         # Các cấu hình mặc định (replicaCount, image, resources, ingress, autoscaling...)
+├── templates/          # Thư mục chứa các template Kubernetes YAML
+│   ├── _helpers.tpl    # Định nghĩa các helper template dùng chung
+│   ├── deployment.yaml # Template cho Deployment
+│   ├── hpa.yaml        # Template cho HPA (chỉ kích hoạt nếu autoscaling.enabled=true)
+│   ├── service.yaml    # Template cho Service
+│   └── ingress.yaml    # Template cho Ingress (hỗ trợ bật/tắt TLS)
+```
+
+### 7.2 Cài đặt và cập nhật ứng dụng bằng Helm
+
+Cài đặt hoặc cập nhật (upgrade) release `demo-app` từ thư mục Chart:
+
+```bash
+helm upgrade --install demo-app ./demo-app
+```
+
+Kiểm tra danh sách các ứng dụng đang chạy qua Helm:
+
+```bash
+helm list
+```
+
+Xem danh sách tài nguyên và trạng thái thực tế của release:
+
+```bash
+helm status demo-app
+```
+
+### 7.3 Gỡ bỏ ứng dụng
+
+Khi không cần thiết, có thể gỡ bỏ toàn bộ tài nguyên được tạo bởi Helm bằng lệnh:
+
+```bash
+helm uninstall demo-app
 ```
