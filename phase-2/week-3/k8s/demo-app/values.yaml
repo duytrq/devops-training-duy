@@ -1,0 +1,40 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/duytrq/demo-app
+  tag: sha-918f30ed346f9e6f9bbd0d8ca876934699413d12
+  pullPolicy: IfNotPresent
+
+nameOverride: ''
+fullnameOverride: ''
+
+containerPort: 3000
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+resources:
+  requests:
+    memory: 30Mi
+    cpu: 5m
+  limits:
+    memory: 60Mi
+    cpu: 10m
+
+ingress:
+  enabled: true
+  className: traefik
+  host: demo.local
+  path: /
+  pathType: Prefix
+  tls:
+    enabled: true
+    secretName: demo-app-tls
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 50
