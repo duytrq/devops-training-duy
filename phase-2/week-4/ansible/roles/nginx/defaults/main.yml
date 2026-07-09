@@ -1,0 +1,17 @@
+---
+nginx_packages:
+  - nginx
+  - openssl
+
+nginx_user: www-data
+nginx_worker_connections: 768
+nginx_keepalive_timeout: 65
+
+nginx_server_name: "_"
+nginx_conf_path: /etc/nginx/nginx.conf
+
+nginx_ssl_dir: /etc/nginx/ssl
+nginx_ssl_cert_path: /etc/nginx/ssl/nginx-selfsigned.crt
+nginx_ssl_key_path: /etc/nginx/ssl/nginx-selfsigned.key
+nginx_ssl_days: 3650
+nginx_ssl_subject: "/CN={{ nginx_server_name }}"

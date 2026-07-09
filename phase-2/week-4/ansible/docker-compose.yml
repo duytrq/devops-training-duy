@@ -1,0 +1,20 @@
+services:
+  nginx-host-1:
+    build: .
+    container_name: nginx-host-1
+    ports:
+      - "2222:22"
+      - "8081:80"
+      - "8441:443"
+    volumes:
+      - ./.ssh/lab_key.pub:/run/ansible-keys/lab_key.pub:ro
+
+  nginx-host-2:
+    build: .
+    container_name: nginx-host-2
+    ports:
+      - "2223:22"
+      - "8082:80"
+      - "8442:443"
+    volumes:
+      - ./.ssh/lab_key.pub:/run/ansible-keys/lab_key.pub:ro

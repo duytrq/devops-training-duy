@@ -1,0 +1,84 @@
+---
+- name: Install nginx packages
+  ansible.builtin.apt:
+    name: "{{ nginx_packages }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Create nginx SSL directory
+  ansible.builtin.file:
+    path: "{{ nginx_ssl_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Check nginx self-signed certificate
+  ansible.builtin.stat:
+    path: "{{ nginx_ssl_cert_path }}"
+  register: nginx_cert
+
+- name: Check nginx self-signed private key
+  ansible.builtin.stat:
+    path: "{{ nginx_ssl_key_path }}"
+  register: nginx_key
+
+- name: Remove incomplete nginx certificate pair
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - "{{ nginx_ssl_cert_path }}"
+    - "{{ nginx_ssl_key_path }}"
+  when: nginx_cert.stat.exists != nginx_key.stat.exists
+
+- name: Create nginx self-signed certificate
+  ansible.builtin.command:
+    argv:
+      - openssl
+      - req
+      - -x509
+      - -nodes
+      - -newkey
+      - rsa:2048
+      - -days
+      - "{{ nginx_ssl_days | string }}"
+      - -keyout
+      - "{{ nginx_ssl_key_path }}"
+      - -out
+      - "{{ nginx_ssl_cert_path }}"
+      - -subj
+      - "{{ nginx_ssl_subject }}"
+    creates: "{{ nginx_ssl_cert_path }}"
+  notify: reload nginx
+
+- name: Set nginx certificate permissions
+  ansible.builtin.file:
+    path: "{{ nginx_ssl_cert_path }}"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Set nginx private key permissions
+  ansible.builtin.file:
+    path: "{{ nginx_ssl_key_path }}"
+    owner: root
+    group: root
+    mode: "0600"
+
+- name: Render nginx configuration
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: "{{ nginx_conf_path }}"
+    owner: root
+    group: root
+    mode: "0644"
+    validate: nginx -t -c %s
+  notify: reload nginx
+
+- name: Ensure nginx service is enabled and started
+  ansible.builtin.service:
+    name: nginx
+    enabled: true
+    state: started
