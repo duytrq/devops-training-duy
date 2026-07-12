@@ -1,0 +1,19 @@
+grafana:
+  enabled: true
+
+  adminPassword: admin123
+
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - localhost
+    paths:
+      - /
+
+  dashboards:
+    default:
+      node-exporter-full:
+        gnetId: 1860
+        revision: 37
+        datasource: Prometheus
